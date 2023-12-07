@@ -1,8 +1,6 @@
 package StepDefination;
-
 import PageActions.LoginPage;
 import PageActions.viewSystemUsersPage;
-import io.cucumber.cienvironment.internal.com.eclipsesource.json.JsonParser;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -10,28 +8,19 @@ import io.cucumber.java.en.When;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
-
-
 import static StepDefination.Hooks.Configprop;
 import static StepDefination.Hooks.driver;
 
 public class Admin_Steps {
-    //public WebDriver driver;
     public LoginPage lp;
 
     public viewSystemUsersPage vsu;
 
     @Given("user navigate to orangehrm url")
     public void userNavigateToOrangehrmUrl() throws InterruptedException {
-       // System.setProperty("webdriver.chrome.driver","C:\\Users\\HP\\IdeaProjects\\OrangeHrmProject\\src\\test\\resources\\Driver\\chromedriver.exe");
-        //driver= new ChromeDriver();
         driver.get("https://opensource-demo.orangehrmlive.com/");
         driver.manage().window().maximize();
         lp= new LoginPage(driver);
@@ -53,7 +42,6 @@ public class Admin_Steps {
 
     @When("user enter valid details")
     public void userEnterValidDetails() throws InterruptedException, IOException, ParseException {
-
         String jsonpath="./src/test/OraneHrmData/searchUser_Data.json";
         JSONParser parser = new JSONParser();
         Reader reader = new FileReader(jsonpath);

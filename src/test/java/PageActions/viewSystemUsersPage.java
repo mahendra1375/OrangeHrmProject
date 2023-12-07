@@ -23,7 +23,6 @@ public class viewSystemUsersPage extends genericActions {
     WebElement UsernameTextBox;
 
     public void enterUsername(String username){
-        //UsernameTextBox.sendKeys(username);
         waitClearEnterText(UsernameTextBox, username);
     }
 
@@ -36,26 +35,17 @@ public class viewSystemUsersPage extends genericActions {
     public void selectUserRole() throws InterruptedException {
         //UserRoleDropdown.click();
         click(UserRoleDropdown);
-//        waitForExpectedElement(UserRoleAdmin, 15);
-//        UserRoleAdmin.click();
         click(UserRoleAdmin);
     }
-
 
     @FindBy(xpath = "//input[@placeholder='Type for hints...']")
     WebElement EmplyeennameTextBox;
 
-
     @FindBy(xpath = "//div[@role='option']//span[text()='QA  QA']")
     WebElement EmpName;
 
-
-
-
     public void selectEmployeeName(String empname) throws InterruptedException {
-        //EmplyeennameTextBox.sendKeys(empname);
         waitClearEnterText(EmplyeennameTextBox, empname);
-        //EmpName.click();
         click(EmpName);
     }
 
@@ -67,9 +57,7 @@ public class viewSystemUsersPage extends genericActions {
     WebElement StatusEnabeled;
 
     public void selectStatus() throws InterruptedException {
-        //statusDropdown.click();
         click(statusDropdown);
-        //StatusEnabeled.click();
         click(StatusEnabeled);
     }
 

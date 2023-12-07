@@ -28,14 +28,12 @@ public class LoginPage extends genericActions {
 
     public void enterUsername(String Username){
 
-     //   Uname.sendKeys(Username);
         waitClearEnterText(Uname,Username);
 
     }
 
     public void enterPassword(String Password){
 
-        //PWord.sendKeys(Password);
         waitClearEnterText(PWord, Password);
     }
 
