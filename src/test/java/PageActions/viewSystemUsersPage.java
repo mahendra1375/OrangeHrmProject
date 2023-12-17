@@ -19,7 +19,7 @@ public class viewSystemUsersPage extends genericActions {
         click(AdminTab);
     }
 
-    @FindBy(xpath = "//label[text()='Username']/parent::div/following-sibling::div//input[@class='oxd-input oxd-input--active']")
+    @FindBy(xpath = "//label[text()='Username']/parent::div/following-sibling::div//input")
     WebElement UsernameTextBox;
 
     public void enterUsername(String username){
@@ -41,7 +41,7 @@ public class viewSystemUsersPage extends genericActions {
     @FindBy(xpath = "//input[@placeholder='Type for hints...']")
     WebElement EmplyeennameTextBox;
 
-    @FindBy(xpath = "//div[@role='option']//span[text()='QA  QA']")
+    @FindBy(xpath = "//div[@role='option']//span[1]")
     WebElement EmpName;
 
     public void selectEmployeeName(String empname) throws InterruptedException {
