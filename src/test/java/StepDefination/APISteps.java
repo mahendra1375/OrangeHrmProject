@@ -1,0 +1,66 @@
+package StepDefination;
+
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.restassured.RestAssured;
+import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
+import org.testng.Assert;
+
+import static io.restassured.RestAssured.given;
+
+
+public class APISteps {
+
+    String responseBody;
+    Response response;
+    @Given("Trigger api request to create user")
+    public void triggerApiRequestToCreateUser() {
+
+        RestAssured.baseURI="https://reqres.in";
+        String requestBody="{\n" +
+                "    \"name\": \"morpheus\",\n" +
+                "    \"job\": \"leader\"\n" +
+                "}";
+
+        response=given().log().all().header("Content-Type", "application/json")
+                .body(requestBody)
+                .when().post("api/users")
+                .then().log().all().extract().response();
+    }
+
+    @And("Extract response")
+    public void extractResponse() {
+        
+        responseBody=response.asPrettyString();
+    }
+
+    @Then("Validate Status code is {string}")
+    public void validateStatusCodeIs(String arg0) {
+
+        int ActualstatusCode=response.getStatusCode();
+        System.out.println("Staus code received is : " +ActualstatusCode);
+
+    }
+
+    @Then("Validate response Body")
+    public void validateResponseBody() {
+
+        JsonPath jsp = new JsonPath(responseBody);
+        String resName=jsp.getString("name");
+        String resJob=jsp.getString("job");
+        String resId=jsp.getString("id");
+        String resDate=jsp.getString("createdAt");
+
+        System.out.println("Name in response : " +resName);
+        Assert.assertEquals(resName,"morpheus");
+
+        System.out.println("Job in response : " +resJob);
+        Assert.assertEquals(resJob,"leader");
+
+        System.out.println("Id in response : " +resId);
+        System.out.println("Date in response : " +resDate);
+
+    }
+}
