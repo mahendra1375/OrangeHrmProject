@@ -65,6 +65,6 @@ public class Admin_Steps {
 
     @And("logout from orange hrm")
     public void logoutFromOrangeHrm() {
-        driver.quit();
+        driver.manage().deleteAllCookies();
     }
 }
