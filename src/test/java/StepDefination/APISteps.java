@@ -3,6 +3,7 @@ package StepDefination;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en_old.Ac;
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
@@ -38,10 +39,9 @@ public class APISteps {
 
     @Then("Validate Status code is {string}")
     public void validateStatusCodeIs(String arg0) {
-
         int ActualstatusCode=response.getStatusCode();
         System.out.println("Staus code received is : " +ActualstatusCode);
-
+        Assert.assertEquals(ActualstatusCode, 202);
     }
 
     @Then("Validate response Body")
