@@ -1,3 +1,4 @@
+@API
 Feature: reqres post api automation
 
   @ACV-Test002
