@@ -41,7 +41,7 @@ public class APISteps {
     public void validateStatusCodeIs(String arg0) {
         int ActualstatusCode=response.getStatusCode();
         System.out.println("Staus code received is : " +ActualstatusCode);
-        Assert.assertEquals(ActualstatusCode, 202);
+        Assert.assertEquals(ActualstatusCode, 201);
     }
 
     @Then("Validate response Body")
