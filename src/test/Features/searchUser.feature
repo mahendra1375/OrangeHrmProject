@@ -1,5 +1,6 @@
 Feature: Search User
 
+  @ACV-Test002
   Scenario: Search User with valid details
     Given user navigate to orangehrm url
     And user navigate to admin section
