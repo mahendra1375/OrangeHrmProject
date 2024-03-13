@@ -1,6 +1,6 @@
 Feature: Login Feature
 
-  @ACV-Test002
+  @ACV-Test002 @ACV-Test003
   Scenario: Search User with valid details
     Given user navigate to orangehrm url
     And user navigate to admin section

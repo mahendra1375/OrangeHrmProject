@@ -3,6 +3,7 @@ package StepDefination;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -23,7 +24,8 @@ public class Hooks {
             Configprop.load(Fis);
             String Br = Configprop.getProperty("Browser");
             if (Br.equalsIgnoreCase("chrome")) {
-                System.setProperty("webdriver.chrome.driver", "C:\\Users\\HP\\IdeaProjects\\OrangeHrmProject\\src\\test\\resources\\Driver\\chromedriver.exe");
+                //System.setProperty("webdriver.chrome.driver", "C:\\Users\\HP\\IdeaProjects\\OrangeHrmProject\\src\\test\\resources\\Driver\\chromedriver.exe");
+                WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver();
             } else {
                 System.out.println("Browser Not matched");
