@@ -1,7 +1,7 @@
 @API
 Feature: reqres post api automation
 
-  @ACV-Test002
+  @ACV-Test002 @ACV-Test003
   Scenario: create user
     #https://reqres.in/api/users
     Given Trigger api request to create user
