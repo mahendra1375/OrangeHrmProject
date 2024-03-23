@@ -48,7 +48,7 @@ public class Hooks {
 
     @After(order = 1)
     public static void closeBrowser(Scenario SC){
-        if (SC.getSourceTagNames().contains("@API")){
+        if (!SC.getSourceTagNames().contains("@API")){
             driver.quit();
             System.out.println("Closing the browser");
         }
