@@ -1,5 +1,7 @@
-package PageActions;
+package Page.Actions;
 
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,11 +11,25 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class genericActions {
-    static WebDriver driver;
+    WebDriver driver;
+
+    public genericActions(WebDriver driver){
+        this.driver=driver;
+    }
 
     public void waitForExpectedElement(WebElement elementName, long waitTimeSeconds){
-       WebDriverWait wait= new WebDriverWait(driver,Duration.ofSeconds(waitTimeSeconds));
-       wait.until(ExpectedConditions.visibilityOf(elementName));
+        WebDriverWait wait= new WebDriverWait(driver, Duration.ofSeconds(waitTimeSeconds));
+        wait.until(ExpectedConditions.visibilityOf(elementName));
+    }
+
+    public void waitForExpectedElement(By by, long waitTimeSeconds){
+        WebDriverWait wait= new WebDriverWait(driver, Duration.ofSeconds(waitTimeSeconds));
+        wait.until(ExpectedConditions.visibilityOf((WebElement) by));
+    }
+
+    public void waitForExpectedElement(By by){
+        WebDriverWait wait= new WebDriverWait(driver, Duration.ofSeconds(60));
+        wait.until(ExpectedConditions.visibilityOf((WebElement) by));
     }
 
     public void scrollIntoView_Element(WebElement elementName){
@@ -25,6 +41,11 @@ public class genericActions {
     public void click(WebElement element){
         WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(30));
         wait.until(ExpectedConditions.elementToBeClickable(element)).click();
+    }
+
+    public void click(By by){
+        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.elementToBeClickable(by)).click();
     }
 
     public  void jsClick(WebElement element){
@@ -41,5 +62,11 @@ public class genericActions {
         text_Box.sendKeys(value);
     }
 
-
+    public void waitClearEnterText(By by, String value){
+        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(30));
+        WebElement text_Box=wait.until(ExpectedConditions.elementToBeClickable(by));
+        text_Box.click();
+        text_Box.clear();
+        text_Box.sendKeys(value);
+    }
 }
