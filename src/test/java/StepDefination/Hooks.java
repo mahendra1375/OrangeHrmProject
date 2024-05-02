@@ -20,7 +20,7 @@ public class Hooks {
     public static void browsersetUp (Scenario SC) throws IOException {
         if (!SC.getSourceTagNames().contains("@API")) {
             Configprop = new Properties();
-            FileInputStream Fis = new FileInputStream("./src/test/OrangeHrmConfigFiles/orangeHrmconfig.properties");
+            FileInputStream Fis = new FileInputStream("./src/test/java/OrgHrmConfig/orangeHrmconfig.properties");
             Configprop.load(Fis);
             String Br = Configprop.getProperty("Browser");
             if (Br.equalsIgnoreCase("chrome")) {

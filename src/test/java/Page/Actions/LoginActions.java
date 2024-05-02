@@ -9,9 +9,9 @@ public class LoginActions extends genericActions {
     public LoginActions(WebDriver driver){
         super(driver);
     };
-    public void logintoOrangeHrm() throws InterruptedException {
-        waitClearEnterText(UserName_txt,"Admin");
-        waitClearEnterText(Password_txt, "admin123");
+    public void logintoOrangeHrm(String Username, String Password) throws InterruptedException {
+        waitClearEnterText(UserName_txt, Username);
+        waitClearEnterText(Password_txt, Password);
         click(Login_Btn);
     }
 }

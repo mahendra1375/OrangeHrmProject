@@ -21,15 +21,15 @@ public class AdminUserManagementActions extends genericActions {
         String xpath= "//div[@role='option']//span[text()='" + PickListValue + "']";
         click(By.xpath(xpath));
     }
-    public void userEnterDetails() throws InterruptedException {
+    public void userEnterDetails(String UserName, String UserRole, String EmployeeName, String Status) throws InterruptedException {
        // waitForExpectedElement(UsernameTextBox, 30);
-        waitClearEnterText(UsernameTextBox, "TheBoy");
+        waitClearEnterText(UsernameTextBox, UserName);
         click(UserRoleDropdown);
-        click(UserRole("Admin"));
-        waitClearEnterText(EmployeeTextBox, "John Doe");
+        click(UserRole(UserRole));
+        waitClearEnterText(EmployeeTextBox, EmployeeName);
         click(EmpName);
         click(StatusDropdown);
-        selectStausPicklistValue("Enabled");
+        selectStausPicklistValue(Status);
         click(SearchBtn);
         Thread.sleep(5000);
     }
