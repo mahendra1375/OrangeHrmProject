@@ -1,7 +1,12 @@
 package Page.Actions;
 
+import io.cucumber.java.Scenario;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+
+import java.util.ArrayList;
+import java.util.Set;
 
 import static Page.Objects.AdminUserManagement.*;
 
@@ -29,8 +34,18 @@ public class AdminUserManagementActions extends genericActions {
         waitClearEnterText(EmployeeTextBox, EmployeeName);
         click(EmpName);
         click(StatusDropdown);
+        String firstName= "Mahendra";
         selectStausPicklistValue(Status);
         click(SearchBtn);
         Thread.sleep(5000);
+        ((JavascriptExecutor) driver).executeAsyncScript("window.open()");
+        Thread.sleep(5000);
+       // Set<String> tabs =driver.getWindowHandles();
+        ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(tabs.get(0));
+        driver.get("https://www.way2automation.com/way2auto_jquery/");
+        Thread.sleep(5000);
     }
+
+
 }

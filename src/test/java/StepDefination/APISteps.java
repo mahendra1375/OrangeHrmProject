@@ -7,7 +7,10 @@ import io.cucumber.java.en_old.Ac;
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
+import org.hamcrest.Matchers;
 import org.testng.Assert;
+
+import java.util.regex.Matcher;
 
 import static io.restassured.RestAssured.given;
 
@@ -25,10 +28,15 @@ public class APISteps {
                 "    \"job\": \"leader\"\n" +
                 "}";
 
-        response=given().log().all().header("Content-Type", "application/json")
-                .body(requestBody)
-                .when().post("api/users")
-                .then().log().all().extract().response();
+        response=given().log().all()
+                    .header("Content-Type", "application/json")
+                    .header("Authorization", "BearerToken")
+                    .auth().oauth2("Token")
+                    .body(requestBody)
+                .when()
+                    .post("api/users")
+                .then().log().all()
+                    .extract().response();
     }
 
     @And("Extract response")
@@ -42,6 +50,12 @@ public class APISteps {
         int ActualstatusCode=response.getStatusCode();
         System.out.println("Staus code received is : " +ActualstatusCode);
         Assert.assertEquals(ActualstatusCode, 201);
+
+        long Response_Time= response.getTime();
+        System.out.println("Response Time is: "+Response_Time);
+
+        String Server_val=response.header("Server");
+        System.out.println("Server in Response Header: "+Server_val);
     }
 
     @Then("Validate response Body")
