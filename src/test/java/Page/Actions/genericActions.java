@@ -1,6 +1,7 @@
 package Page.Actions;
 
 
+import io.cucumber.java.Scenario;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -13,8 +14,10 @@ import java.time.Duration;
 
 public class genericActions {
     WebDriver driver;
+    Scenario scenario;
 
     public genericActions(WebDriver driver){
+
         this.driver=driver;
     }
 
@@ -74,5 +77,11 @@ public class genericActions {
     public void  mouserhover(By by){
         Actions act = new Actions(driver);
         act.moveToElement((WebElement) by).keyDown(Keys.ENTER);
+    }
+
+    public void captureScreenShot(String screnshhotName){
+        TakesScreenshot TSS = (TakesScreenshot) driver;
+        byte[] screenshot = TSS.getScreenshotAs(OutputType.BYTES);
+        scenario.attach(screenshot,"image/png", screnshhotName);
     }
 }
