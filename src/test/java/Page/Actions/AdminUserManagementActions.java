@@ -1,10 +1,9 @@
 package Page.Actions;
 
 import io.cucumber.java.Scenario;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
+import io.cucumber.java.Scenario;
 import java.util.ArrayList;
 import java.util.Set;
 
@@ -20,6 +19,7 @@ public class AdminUserManagementActions extends genericActions {
     public void NavigatetoAdmin(){
         //waitForExpectedElement(AdminTab, 30);
         click(AdminTab);
+        captureScreenShot("ScreenShot");
     }
 
     public void selectStausPicklistValue(String PickListValue){
@@ -38,13 +38,16 @@ public class AdminUserManagementActions extends genericActions {
         selectStausPicklistValue(Status);
         click(SearchBtn);
         Thread.sleep(5000);
-        ((JavascriptExecutor) driver).executeAsyncScript("window.open()");
+        //((JavascriptExecutor) driver).executeAsyncScript("window.open()");
+        driver.switchTo().newWindow(WindowType.TAB);
         Thread.sleep(5000);
-       // Set<String> tabs =driver.getWindowHandles();
-        ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
+        Set<String> tab =driver.getWindowHandles();
+        ArrayList<String> tabs = new ArrayList<>(tab);
         driver.switchTo().window(tabs.get(0));
         driver.get("https://www.way2automation.com/way2auto_jquery/");
         Thread.sleep(5000);
+
+
     }
 
 
