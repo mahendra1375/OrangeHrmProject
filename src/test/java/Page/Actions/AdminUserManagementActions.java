@@ -19,7 +19,7 @@ public class AdminUserManagementActions extends genericActions {
     public void NavigatetoAdmin(){
         //waitForExpectedElement(AdminTab, 30);
         click(AdminTab);
-        captureScreenShot("ScreenShot");
+        //captureScreenShot("ScreenShot");
     }
 
     public void selectStausPicklistValue(String PickListValue){
