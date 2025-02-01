@@ -1,6 +1,6 @@
 Feature: Search User
 
-  @ACV-Test004 @Regression @ACV-Test007
+  @ACV-Test002 @ACV-Test004 @Regression @ACV-Test007
   Scenario: Search User with valid details
     Given user navigate to orangehrm url
     And User Login to orangeHrm
