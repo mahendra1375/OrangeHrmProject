@@ -60,6 +60,7 @@ public class APISteps {
 
         System.out.println("kishor");
         System.out.println("Wabale");
+
     }
 
     @Then("Validate response Body")
