@@ -13,5 +13,7 @@ public class LoginSteps {
         String Username=Configprop.getProperty("Username");
         String Password= Configprop.getProperty("Password");
         LA.logintoOrangeHrm(Username, Password);
+        System.out.println("kiran");
+        System.out.println("wadne");
     }
 }
