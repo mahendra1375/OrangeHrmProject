@@ -49,6 +49,7 @@ public class APISteps {
     public void validateStatusCodeIs(String arg0) {
         int ActualstatusCode=response.getStatusCode();
         System.out.println("Staus code received is TEst : " +ActualstatusCode);
+        System.out.println("this is test statement");
         Assert.assertEquals(ActualstatusCode, 201);
 
         long Response_Time= response.getTime();
