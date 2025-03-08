@@ -56,6 +56,8 @@ public class APISteps {
 
         String Server_val=response.header("Server");
         System.out.println("Server in Response Header: "+Server_val);
+
+        System.out.println("Mahendra");
     }
 
     @Then("Validate response Body")
