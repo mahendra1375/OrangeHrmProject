@@ -7,8 +7,10 @@ import io.cucumber.java.en_old.Ac;
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
+import org.apache.maven.surefire.shared.io.input.TaggedReader;
 import org.hamcrest.Matchers;
 import org.testng.Assert;
+import io.restassured.module.jsv.JsonSchemaValidator;
 
 import java.util.regex.Matcher;
 
@@ -43,6 +45,7 @@ public class APISteps {
     public void extractResponse() {
         
         responseBody=response.asPrettyString();
+        System.out.println("ResponseBody: "+responseBody);
     }
 
     @Then("Validate Status code is {string}")
@@ -82,6 +85,28 @@ public class APISteps {
 
         System.out.println("Id in response : " +resId);
         System.out.println("Date in response : " +resDate);
+
+    }
+
+    @Given("Trigger book api request for schema Validation")
+    public void triggerApiRequestForSchemaValidation() throws InterruptedException {
+
+        System.out.println("Validation Start");
+
+        given()
+                .header("Content-Type", "application/json")
+                .when().get("https://simple-books-api.glitch.me/books").then().assertThat().body(JsonSchemaValidator.matchesJsonSchemaInClasspath("booksSchema.json"));
+
+        Thread.sleep(5000
+        );
+    }
+
+    @Given("Trigger user api request for schema Validation")
+    public void triggerUserApiRequestForSchemaValidation() {
+        given()
+                .header("Content-Type", "application/json")
+                .when().get("https://petstore.swagger.io/v2/user/Mahendra1234").then().assertThat().body(JsonSchemaValidator.matchesJsonSchemaInClasspath("userSchema.json"));
+
 
     }
 }
